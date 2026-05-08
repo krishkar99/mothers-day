@@ -169,18 +169,15 @@
 
     <script>
         let clickCount = 0;
-        let maxClicks = 3;
+        let maxClicks = 2;
 
-        // Photo URLs - Change these to your actual photo URLs
-        const momPhoto = 'https://via.placeholder.com/280?text=Mom';
-        const kid1Photo = 'https://via.placeholder.com/280?text=Kid+1';
-        const kid2Photo = 'https://via.placeholder.com/280?text=Kid+2';
-        const familyPhoto = 'https://via.placeholder.com/280?text=Family';
+        // Photo URLs from Google Drive
+        const momPhoto = 'https://drive.google.com/uc?id=1EFzZTUP2dTihZYAzRLy7ENqQKwjWFUH_';
+        const familyPhoto = 'https://drive.google.com/uc?id=1s244tvsQ_16dbLopwe4kCYY46M8ZgKod';
 
         const messages = [
             "Click the heart to see the gift!",
             "Happy Mother's Day! 🌹",
-            "Your beautiful children love you! 👶👦",
             "Our whole family loves you! 👨‍👩‍👧‍👦"
         ];
 
@@ -197,11 +194,8 @@
                 showImage(momPhoto);
                 document.getElementById('message').textContent = messages[1];
             } else if (clickCount === 2) {
-                showKids();
-                document.getElementById('message').textContent = messages[2];
-            } else if (clickCount === 3) {
                 showFamily();
-                document.getElementById('message').textContent = messages[3];
+                document.getElementById('message').textContent = messages[2];
             } else {
                 resetHeart();
             }
@@ -218,17 +212,6 @@
         function showImage(photoUrl) {
             const heart = document.getElementById('heart');
             heart.innerHTML = `<img src="${photoUrl}" alt="Photo" onerror="this.src='https://via.placeholder.com/280?text=Photo'">`;
-        }
-
-        function showKids() {
-            const heart = document.getElementById('heart');
-            heart.style.backgroundImage = 'linear-gradient(135deg, #ff6b9d 0%, #c44569 100%)';
-            heart.innerHTML = `
-                <div style="display: flex; gap: 10px; justify-content: center; align-items: center;">
-                    <img src="${kid1Photo}" alt="Kid 1" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid white;">
-                    <img src="${kid2Photo}" alt="Kid 2" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid white;">
-                </div>
-            `;
         }
 
         function showFamily() {
